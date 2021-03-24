@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskXamarin.View.Login">
+    <ContentPage.Resources>
+        <Style x:Key="fotoAsseco" TargetType="Image">
+            <Setter Property="Source" Value="asseco_logo.jpg"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>       
+        
+        <StackLayout BackgroundColor="#EDEDF3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Image Style="{StaticResource fotoAsseco}" Margin="0, 70, 0, 0"/>
+            <Label TextColor="#0F2536" FontSize="28" Margin="25, 70, 0, 0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="Welcome,&#13;"/>
+                            <Span Text="sign in to continue &#10;"/>
+                            <Span Text="on "/>
+                            <Span Text="Tasks." TextColor="#068EF4"/>
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <StackLayout Margin="0, 60, 0, 0" BackgroundColor="#fafafb">
+                <Entry Placeholder="Username" PlaceholderColor="#b1b1b1" TextColor="#262626" Margin="25, 0, 25, 0"/>
+                <Entry Placeholder="Password" PlaceholderColor="#b1b1b1" TextColor="#262626" Margin="25, 0, 25, 0" IsPassword="True"/>
+            </StackLayout>
+            <Button Text="Login" TextColor="#fafafb" FontSize="20" Padding="0, 15" BackgroundColor="#0091ff"/>
+            <Label Text="©2021 Asseco South Eastern Europe" 
+                   TextColor="#303030" 
+                   FontSize="12" 
+                   HorizontalTextAlignment="Center"/>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <Label Text="gee" TextColor="Black" BackgroundColor="White"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
