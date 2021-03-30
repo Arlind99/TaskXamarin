@@ -1,21 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TaskXamarin.View.Login">
+             x:Class="TaskXamarin.View.Login"
+             xmlns:local="clr-namespace:TaskXamarin.ViewModel;assembly=TaskXamarin">
+    <ContentPage.BindingContext>
+        <local:LoginViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Resources>
         <Style x:Key="fotoAsseco" TargetType="Image">
             <Setter Property="Source" Value="asseco_logo.jpg"/>
+            <Setter Property="Margin" Value="0, 70, 0, 0"/>
         </Style>
     </ContentPage.Resources>
-    <ContentPage.Content>       
-        
-        <StackLayout BackgroundColor="#EDEDF3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <Image Style="{StaticResource fotoAsseco}" Margin="0, 70, 0, 0"/>
-            <Label TextColor="#0F2536" FontSize="28" Margin="25, 70, 0, 0">
+    <ContentPage.Content>
+        <Grid BackgroundColor="#EDEDF3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO"/> <!-- e para osht veq logo -->
+                <RowDefinition Height="AUTO"/> <!-- e dyta osht welcome teksti -->
+                <RowDefinition Height="AUTO"/> <!-- e treta osht Entry tekstet edhe butoni login -->
+                <RowDefinition Height="AUTO"/> <!-- e katerta osht Copyright -->
+            </Grid.RowDefinitions>
+            <Image Style="{StaticResource fotoAsseco}" Grid.Row="0"/>
+            <Label TextColor="#0F2536" FontSize="28" Grid.Row="1" Margin="25, 65, 0, 0">
                 <Label.FormattedText>
                     <FormattedString>
                         <FormattedString.Spans>
-                            <Span Text="Welcome,&#13;"/>
+                            <Span Text="Welcome, &#10;"/>
                             <Span Text="sign in to continue &#10;"/>
                             <Span Text="on "/>
                             <Span Text="Tasks." TextColor="#068EF4"/>
@@ -23,18 +33,21 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <StackLayout Margin="0, 60, 0, 0" BackgroundColor="#fafafb">
-                <Entry Placeholder="Username" PlaceholderColor="#b1b1b1" TextColor="#262626" Margin="25, 0, 25, 0"/>
-                <Entry Placeholder="Password" PlaceholderColor="#b1b1b1" TextColor="#262626" Margin="25, 0, 25, 0" IsPassword="True"/>
+            <StackLayout Grid.Row="3" Margin="0, 55, 0, 0" VerticalOptions="Fill" Spacing="0">
+                <StackLayout BackgroundColor="#fafafb" Padding="25, 0, 25, 0" VerticalOptions="FillAndExpand">
+                    <Entry Text="{Binding EntUsername}" Placeholder="Username" PlaceholderColor="#b1b1b1" TextColor="#262626"/>
+                    <Entry Text="{Binding EntPassword}" Placeholder="Password" PlaceholderColor="#b1b1b1" TextColor="#262626" IsPassword="True"/>
+                    <Label Text="{Binding LblError}" TextColor="Red" VerticalOptions="FillAndExpand"/>
+                </StackLayout>
+                <Button Text="Login" TextColor="#fafafb" BackgroundColor="#0091FF" TextTransform="None" FontSize="20" Command="{Binding btnLogin}"/>
             </StackLayout>
-            <Button Text="Login" TextColor="#fafafb" FontSize="20" Padding="0, 15" BackgroundColor="#0091ff"/>
-            <Label Text="©2021 Asseco South Eastern Europe" 
+            <Label Text="©ASSECO SOUTH EASTERN EUROPE" 
+                   HorizontalTextAlignment="Center" 
                    TextColor="#303030" 
-                   FontSize="12" 
-                   HorizontalTextAlignment="Center"/>
-            <StackLayout VerticalOptions="FillAndExpand">
-                <Label Text="gee" TextColor="Black" BackgroundColor="White"/>
-            </StackLayout>
-        </StackLayout>
+                   Grid.Row="4"
+                   VerticalOptions="EndAndExpand" 
+                   FontSize="12"
+                   Margin="0, 0, 0, 15"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

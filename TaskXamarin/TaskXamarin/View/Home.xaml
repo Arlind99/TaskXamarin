@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskXamarin.View.Home"
+             xmlns:pcview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             NavigationPage.HasBackButton="False"
+             xmlns:coverters="clr-namespace:TaskXamarin.Converters">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="logout.png" Priority="0" Order="Primary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <coverters:BoolToStringConverter x:Key="boolToString"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid BackgroundColor="#EDEDF3" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <!--0-->
+                <RowDefinition Height="AUTO"/>
+                <!--1-->
+                <RowDefinition Height="AUTO"/>
+                <!--2-->
+                <RowDefinition Height="AUTO"/>
+                <!--3-->
+                <RowDefinition Height="AUTO"/>
+                <!--4-->
+                <RowDefinition Height="AUTO"/>
+                <!--5-->
+                <RowDefinition Height="AUTO"/>
+            </Grid.RowDefinitions>
+            <Grid HorizontalOptions="Center" ColumnSpacing="0" RowSpacing="0" Margin="0, 10, 0, 0" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="AUTO"/>
+                    <ColumnDefinition Width="AUTO"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <pcview:PancakeView 
+                    CornerRadius="20,0,20,0"
+                    Border="{pcview:BorderMarkup Color=#DEDEE5, Thickness='3'}"
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="70"
+                    WidthRequest="70">
+                    <Label Text="Mine"
+                           x:Name="LblMine"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           TextColor="Black">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="MineLabel_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </pcview:PancakeView>
+                <pcview:PancakeView 
+                    CornerRadius="0,20,0,20"
+                    Border="{pcview:BorderMarkup Color=#DEDEE5, Thickness='3'}"
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="70"
+                    WidthRequest="70"
+                    Grid.Column="1">
+                    <Label Text="All"
+                           x:Name="LblAll"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           TextColor="Black">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AllLabel_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </pcview:PancakeView>
+            </Grid>
+            <Label Grid.Row="1"
+                Text="{Binding EntUsername}"
+                   TextColor="#0f2536"
+                   FontSize="35"
+                   Margin="15, 0, 0, 0"/>
+            <StackLayout Grid.Row="2"
+                         Margin="15, 0, 100, 0">
+                <Label Text="{Binding LblCompleted}"
+                       TextColor="#0f2536"
+                       FontSize="12"/>
+                <ProgressBar 
+                    ProgressColor="#78f000"
+                    Progress="{Binding PbTask}"
+                    BackgroundColor="#dfdfe2"
+                    HeightRequest="6"/>
+            </StackLayout>
+            <Line Grid.Row="3" BackgroundColor="#979797" HeightRequest="0.2" Margin="0, 12, 0, 12"/>
+            <ListView Grid.Row="4" ItemsSource="{Binding LvTask}" HorizontalOptions="StartAndExpand" HasUnevenRows="True" VerticalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame CornerRadius="10" HasShadow="True"  BackgroundColor="White" Margin="10, 5, 10, 5" Padding="10">
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Description}" TextColor="#0f2536" FontSize="17"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding TaskCreater}" TextColor="#2a5d85" HorizontalOptions="StartAndExpand" FontSize="12"/>
+                                        <Label Text="{Binding IsImportant, Converter={StaticResource boolToString}}" TextColor="#e02020" HorizontalOptions="End" FontSize="24"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                            <!--<StackLayout Orientation="Vertical">
+                            <Label Text="{Binding Description}" TextColor="#0f2536"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding TaskCreater}" TextColor="#2a5d85" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Important}" TextColor="#e02020" HorizontalOptions="End" FontSize="24"/>
+                            </StackLayout>
+                        </StackLayout>-->
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--<Frame WidthRequest="40"
+                   HeightRequest="85"
+                   CornerRadius="50"
+                   Grid.Row="5"
+                   HorizontalOptions="End"
+                   VerticalOptions="End"
+                   BackgroundColor="White"
+                   Margin="0, 0, 20, 20">
+                <Label Text="+" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40" TextColor="Black"/>
+            </Frame>-->
+            <Button Text="+"
+                    Margin="0, 0, 15, 15"
+                    BackgroundColor="White"
+                    TextColor="Black"
+                    FontSize="35"
+                    WidthRequest="70"
+                    HeightRequest="70"
+                    HorizontalOptions="End"
+                    VerticalOptions="End"
+                    BorderRadius="50"
+                    BorderWidth="2"
+                    BorderColor="#66b0b0b0"
+                    IsVisible="true"
+                    TranslationY="500"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+<!--<Grid BackgroundColor="#d2d2d9" Padding="5" Margin="10">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="AUTO"/>
+        <RowDefinition Height="AUTO"/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="AUTO"/>
+    </Grid.ColumnDefinitions>
+    <Label Grid.Row="0" Grid.Column="0" Text="{Binding Description}" TextColor="#0f2536"/>
+    <Label Grid.Row="1" Grid.Column="0" Text="{Binding TaskCreater}"/>
+    <Label Grid.Column="1" Grid.Row="1" Text="{Binding Important}"/>
+    </Grid> -->
