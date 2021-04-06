@@ -19,8 +19,6 @@ namespace TaskXamarin
             InitializeComponent();
 
             MainPage = new NavigationPage(new Login());
-
-           
         }
 
         protected override void OnStart()
@@ -38,6 +36,10 @@ namespace TaskXamarin
         public async Task PushAsync(Page page)
         {
             await MainPage.Navigation.PushAsync(page);
+        }
+        public async Task PopAsync()
+        {
+            await MainPage.Navigation.PopAsync();
         }
     }
 }

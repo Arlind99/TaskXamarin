@@ -34,7 +34,7 @@
                 </Label.FormattedText>
             </Label>
             <StackLayout Grid.Row="3" Margin="0, 55, 0, 0" VerticalOptions="Fill" Spacing="0">
-                <StackLayout BackgroundColor="#fafafb" Padding="25, 0, 25, 0" VerticalOptions="FillAndExpand">
+                <StackLayout BackgroundColor="#fafafb" Padding="25, 5, 25, 0" VerticalOptions="FillAndExpand">
                     <Entry Text="{Binding EntUsername}" Placeholder="Username" PlaceholderColor="#b1b1b1" TextColor="#262626"/>
                     <Entry Text="{Binding EntPassword}" Placeholder="Password" PlaceholderColor="#b1b1b1" TextColor="#262626" IsPassword="True"/>
                     <Label Text="{Binding LblError}" TextColor="Red" VerticalOptions="FillAndExpand"/>

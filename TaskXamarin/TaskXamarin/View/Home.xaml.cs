@@ -17,6 +17,7 @@ namespace TaskXamarin.View
             InitializeComponent();
             LblMine.BackgroundColor = Color.FromHex("#ffffff");
             LblAll.BackgroundColor = Color.FromHex("#DEDEE5");
+            btnNewTask.TranslationY = Application.Current.MainPage.Height-150;
         }
 
         private void MineLabel_Tapped(object sender, EventArgs e)
@@ -32,6 +33,18 @@ namespace TaskXamarin.View
             var lbl = (Label)sender;
             lbl.BackgroundColor = Color.FromHex("#ffffff");
             LblMine.BackgroundColor = Color.FromHex("#DEDEE5");
+        }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null)
+            {
+                return;
+            }
+            if (sender is ListView lv)
+            {
+                lv.SelectedItem = null;
+            }
         }
     }
 }

@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskXamarin.View.NewTask"
+             NavigationPage.HasBackButton="False"
+             xmlns:view1="clr-namespace:TaskXamarin.View">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="logout.png" Priority="0" Order="Primary" Command="{Binding Previews}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="#f2f2f7">
+            <StackLayout Orientation="Vertical">
+                <StackLayout WidthRequest="300"
+                             Orientation="Horizontal"
+                             Padding="10, 20, 10, 20"
+                             BackgroundColor="#F9F9F9">
+                    <!--<Label
+                        Text="Zurück"
+                        HorizontalOptions="StartAndExpand"
+                        FontSize="17"
+                        TextColor="#007AFF"/>-->
+                    <Label
+                        x:Name="LblDetails"
+                        Text="Details"
+                        HorizontalOptions="CenterAndExpand"
+                        FontSize="17"
+                        TextColor="Black"/>
+                    <!--<Label
+                        x:Name="LblLocked"
+                        Text="Locked"
+                        HorizontalOptions="EndAndExpand"
+                        IsVisible="true"
+                        FontSize="15"
+                        TextColor="#F9F9F9"/>-->
+                </StackLayout>
+                <Label Text="Add possibility to change Menge in Devis Module in Interbohr"
+                       FontSize="25"
+                       TextColor="#0f2536"
+                       Margin="20, 25, 40, 0"/>
+                <StackLayout Orientation="Vertical"
+                             BackgroundColor="White"
+                             Margin="0, 20, 0, 0">
+                    <Label Text="Bemerkung"
+                        Margin="20, 20, 0, 0"/>
+                    <Editor
+                        HeightRequest="120"
+                        Keyboard="Chat"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             BackgroundColor="#f9f9f9"
+                             Padding="20, 10, 30, 10"
+                             Margin="0, 5">
+                    <Label 
+                        Text="Responsible Person"
+                        FontSize="17"
+                        TextColor="#818181"
+                        HorizontalOptions="StartAndExpand"/>
+                    <Label 
+                        Text="Arlind Podrimcaku"
+                        FontSize="17"
+                        TextColor="Black"
+                        HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             BackgroundColor="#f9f9f9"
+                             Padding="20, 10, 30, 10"
+                             Margin="0, 5">
+                    <Label Text="PSP Element"
+                            FontSize="17"
+                           TextColor="#818181"
+                           HorizontalOptions="StartAndExpand"/>
+                    <Label Text="3016004"
+                            FontSize="17"
+                           TextColor="Black"
+                           HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical"
+                             Spacing="0">
+                    <StackLayout Orientation="Horizontal"
+                             BackgroundColor="#f9f9f9"
+                             Padding="20, 10, 30, 10"
+                                 Margin="0, 0, 0, 1">
+                        <Label Text="STFI Nr."
+                               FontSize="17"
+                           TextColor="#818181"
+                           HorizontalOptions="StartAndExpand"/>
+                        <Label Text="123"
+                               FontSize="17"
+                           TextColor="Black"
+                           HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                             BackgroundColor="#f9f9f9"
+                             Padding="20, 10, 30, 10">
+                        <Label Text="Ebi Nr."
+                               FontSize="17"
+                           TextColor="#818181"
+                           HorizontalOptions="StartAndExpand"/>
+                        <Label Text="42"
+                               FontSize="17"
+                           TextColor="Black"
+                           HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </StackLayout>
+                <!--<StackLayout 
+                           Margin="25, 30, 15, 0">
+                    <Label Text="Priority"
+                            FontSize="17"/>
+                    <Frame
+                        Padding="0"
+                        CornerRadius="20">
+                        <StackLayout Orientation="Horizontal"
+                                 BackgroundColor="#E3E3E9">
+                            <Frame
+                                x:Name="fNormal"
+                                Padding="0"
+                                CornerRadius="20"
+                                HorizontalOptions="FillAndExpand"
+                                Margin="2">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="FrameNormalTapped"/>
+                                </Frame.GestureRecognizers>
+                            <Label Text="Normal"
+                               TextColor="Black"
+                               FontSize="17"
+                               HorizontalTextAlignment="Center"
+                               Padding="7"/>
+                            </Frame>
+                            <Frame
+                                x:Name="fHigh"
+                                Padding="0"
+                                CornerRadius="20"
+                                HorizontalOptions="FillAndExpand"
+                                BackgroundColor="Transparent"
+                                Margin="2">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="FrameHighTapped"/>
+                                </Frame.GestureRecognizers>
+                                <Label Text="High"
+                               TextColor="Black"
+                               FontSize="17"
+                               HorizontalTextAlignment="Center"
+                               Padding="7"/>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>-->
+                <view1:PrimaryContentView />
+                <StackLayout Orientation="Vertical"
+                             Spacing="0"
+                             Margin="0, 25, 0, 0">
+                    <StackLayout Orientation="Horizontal"
+                             BackgroundColor="#f9f9f9"
+                             Padding="20, 10, 30, 10"
+                                 Margin="0, 0, 0, 1">
+                        <Label Text="Estimated Time"
+                           TextColor="#818181"
+                           HorizontalOptions="StartAndExpand"
+                               FontSize="17"/>
+                        <Label Text="5.00H"
+                           TextColor="Black"
+                           HorizontalOptions="EndAndExpand"
+                               FontSize="17"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                             BackgroundColor="#f9f9f9"
+                             Padding="20, 10, 30, 10">
+                        <Label Text="Due Date"
+                           TextColor="#818181"
+                           HorizontalOptions="StartAndExpand"
+                               FontSize="17"/>
+                        <Label Text="26.03.2020"
+                           TextColor="Black"
+                           HorizontalOptions="EndAndExpand"
+                               FontSize="17"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

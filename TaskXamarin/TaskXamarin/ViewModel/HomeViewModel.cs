@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
 using TaskXamarin.Model;
+using TaskXamarin.View;
 using Xamarin.Forms;
 
 namespace TaskXamarin.ViewModel
@@ -15,6 +17,23 @@ namespace TaskXamarin.ViewModel
         private List<TaskModel> lvTask;
         private float pbTask;
         private string lblCompleted;
+        public ICommand ImgLogOut => new Command(logOut);
+        public ICommand BtnNewTask => new Command(addNewTask);
+
+        private async void addNewTask()
+        {
+            NewTask newTask = new NewTask();
+            newTask.BindingContext = new NewTaskViewModel();
+            await App.Instance.PushAsync(newTask);
+        }
+
+        private async void logOut()
+        {
+            Login login = new Login();
+            login.BindingContext = new LoginViewModel();
+            await App.Instance.PopAsync();
+            Debug.WriteLine("logout button pressed");
+        }
 
         public string LblCompleted
         {
@@ -73,7 +92,7 @@ namespace TaskXamarin.ViewModel
             LvTask.Add(new TaskModel { ID = "4", Description = "Let me know more about this when you are around", TaskCreater = "Arlind Podrimcaku", IsImportant = false });
             LvTask.Add(new TaskModel { ID = "5", Description = "Let me know more about this when you are around", TaskCreater = "Arlind Podrimcaku", IsImportant = true });
             LvTask.Add(new TaskModel { ID = "6", Description = "Testing the first line", TaskCreater = "Arlind Podrimcaku", IsImportant = false });
-            LvTask.Add(new TaskModel { ID = "7", Description = "First things first", TaskCreater = "Arlind Podrimcaku", IsImportant = true });
+            LvTask.Add(new TaskModel { ID = "7", Description = "First things first", TaskCreater = "Arlind Podrimcaku", IsImportant = false });
         }
 
         public List<TaskModel> LvTask
